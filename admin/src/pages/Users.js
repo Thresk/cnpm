@@ -24,7 +24,7 @@ const Users = () => {
   // Hàm lấy danh sách người dùng từ API
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3001/user/get-users");
+      const response = await fetch("http://localhost:3000/user/get-users");
       const data = await response.json();
       setUsers(data);
     } catch (error) {
@@ -63,7 +63,7 @@ const Users = () => {
     try {
       const response = isEditMode
         ? await fetch(
-            `http://localhost:3001/user/update-user/${currentUser._id}`,
+            `http://localhost:3000/user/update-user/${currentUser._id}`,
             {
               method: "PUT",
               headers: {
@@ -72,7 +72,7 @@ const Users = () => {
               body: JSON.stringify({ email, firstName, lastName, role }),
             }
           )
-        : await fetch("http://localhost:3001/user/create-user", {
+        : await fetch("http://localhost:3000/user/create-user", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -113,7 +113,7 @@ const Users = () => {
 
   const handleCreateEmployee = async ({ email, firstName, lastName, role, idUser }) => {
     try {
-      const response = await fetch("http://localhost:3001/employee/create-from-user", {
+      const response = await fetch("http://localhost:3000/employee/create-from-user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const Users = () => {
 
   const handleUpdateEmployee = async ({ email, firstName, lastName, role, idUser }) => {
     try {
-      const response = await fetch(`http://localhost:3001/employee/update-from-user/${idUser}`, {
+      const response = await fetch(`http://localhost:3000/employee/update-from-user/${idUser}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +184,7 @@ const Users = () => {
   //     onOk: async () => {
   //       try {
   //         const response = await fetch(
-  //           `http://localhost:3001/user/delete-user/${id}`,
+  //           `http://localhost:3000/user/delete-user/${id}`,
   //           {
   //             method: "DELETE",
   //           }
@@ -212,7 +212,7 @@ const Users = () => {
   const handleChangeStatus = async (userId, status) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/user/change-status/${userId}`,
+        `http://localhost:3000/user/change-status/${userId}`,
         {
           method: "PATCH",
           headers: {
